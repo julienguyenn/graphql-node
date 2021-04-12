@@ -70,10 +70,23 @@ var retrieveUsers = function(args) {
   }
 }
 
+// Update a user and return new user details
+var updateUser = function({id, name, age}) {
+    users.map(user => {
+      if (user.id === id) {
+        user.name = name;
+        user.age = age;
+        return user;
+      }
+    });
+    return users.filter(user => user.id === id)[0];
+  }
+
 // Root resolver
 var root = {
     user: getUser,  // Resolver function to return user with specific id
-    users: retrieveUsers
+    users: retrieveUsers,
+    updateUser: updateUser  // Include mutation function in root resolver
 };
 
 // Create an express server and a GraphQL endpoint
