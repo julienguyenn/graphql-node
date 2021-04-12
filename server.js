@@ -62,7 +62,8 @@ var retrieveUsers = function(args) {
 
 // Root resolver
 var root = {
-  hello: () => 'Hello world!'
+    user: getUser,  // Resolver function to return user with specific id
+    users: retrieveUsers
 };
 
 // Create an express server and a GraphQL endpoint
